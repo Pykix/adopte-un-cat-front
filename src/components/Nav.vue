@@ -29,6 +29,7 @@ export default {
   },
   methods: {
     logout() {
+      console.log("bonjour")
       const csrfToken = Cookies.get("csrftoken");
       const djangoAuthToken = localStorage.getItem("Token");
       const config = {
@@ -41,13 +42,14 @@ export default {
       axios
         .post("http://localhost:8000/api/rest-auth/logout/", config)
         .then(response => {
-          if (response.status === 200 && localStorage.getItem("username")) {
+          if (response.status === 200 && localStorage.getItem("user_id")) {
             alert("Vous vous etes bien deconnecté");
             localStorage.clear();
             this.$router.push("/login");
           }
         })
         .catch(err => console.log(err));
+
     }
   }
 };
