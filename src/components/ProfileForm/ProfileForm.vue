@@ -88,32 +88,38 @@ export default {
           Authorization: "Token " + localStorage.getItem("Token")
         }
       };
-      // const img = new FormData();
-      // img.append("photo", this.photo);
-      // console.log(img)
+
       const data = {
         "gender": this.gender,
         "interested_gender": this.interest,
         "color": this.color,
         "hobby": this.hobby,
-        "biography": this.biography,
-       // "photo": img
+        "biography": this.biography
       };
+      const photo = new FormData();
+      photo.append("photo", this.photo, this.photo.name);
       const user_id = localStorage.getItem("user_id");
       axios
-        .put(`http://localhost:8000/api/profiles/${user_id}/`, data, config)
-        .then(r => console.log(r))
+        .all(
+          [axios.put(`http://localhost:8000/api/profiles/${user_id}/`, data, config)],
+          [axios.put("http://127.0.0.1:8000/api/avatar/", photo, config)]
+        )
+        .then(axios.spread((data1, data2) => {
+          console.log("data1", data1, "data2", data2);
+        }))
         .catch(err => console.log(err));
+
     },
     previewFiles: function(event) {
-      this.photo = event.target.files[0].name;
+      this.photo = event.target.files[0];
       console.log(this.photo);
     }
     // uploadImg() {
-    //   const img = new FormData();
-    //   img.append("photo", this.photo, this.photo.name);
-    //   console.log(img)
-    //   return img;
+    //   const photo = new FormData();
+    //   photo.append("photo", this.photo, this.photo.name);
+    //   axios.put("http://127.0.0.1:8000/api/avatar/", photo)
+    //     .then(response => console.log(response))
+    //     .catch(err => console.log(err));
     // }
   }
 };
