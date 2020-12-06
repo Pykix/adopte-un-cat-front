@@ -50,8 +50,8 @@
         ></textarea>
       </div>
       <div class="form-group">
-        <label for="">Une petite photo ?</label>
-        <input type="file" accept="image/" class="file-input" ref="myFiles" @change="previewFiles">
+        <label for="photo">Une petite photo ?</label>
+        <input type="file" id="photo" accept="image/" class="file-input" ref="myFiles" @change="previewFiles">
       </div>
       <button @click.prevent="sendProfileInformation" class="btn btn-primary">Je valide mon profil !</button>
       <small>
@@ -63,7 +63,6 @@
 </template>
 
 <script>
-
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -99,28 +98,28 @@ export default {
       const photo = new FormData();
       photo.append("photo", this.photo, this.photo.name);
       const user_id = localStorage.getItem("user_id");
-      axios
-        .all(
-          [axios.put(`http://localhost:8000/api/profiles/${user_id}/`, data, config)],
-          [axios.put("http://127.0.0.1:8000/api/avatar/", photo, config)]
-        )
-        .then(axios.spread((data1, data2) => {
-          console.log("data1", data1, "data2", data2);
-        }))
-        .catch(err => console.log(err));
 
+      axios
+        .put(`http://localhost:8000/api/profiles/${user_id}/`, data, config)
+        .then(r => console.log(r))
+        .catch(err => console.log(err));
     },
     previewFiles: function(event) {
+      const csrfToken = Cookies.get("csrftoken");
+      const config = {
+        headers: {
+          "X-CSRFToken": csrfToken,
+          Authorization: "Token " + localStorage.getItem("Token")
+        }
+      };
       this.photo = event.target.files[0];
-      console.log(this.photo);
+      const photo = new FormData();
+      photo.append("photo", this.photo, this.photo.name);
+      axios
+        .put("http://localhost:8000/api/avatar/", photo, config)
+        .then(r => console.log(r))
+        .catch(err => console.log(err));
     }
-    // uploadImg() {
-    //   const photo = new FormData();
-    //   photo.append("photo", this.photo, this.photo.name);
-    //   axios.put("http://127.0.0.1:8000/api/avatar/", photo)
-    //     .then(response => console.log(response))
-    //     .catch(err => console.log(err));
-    // }
   }
 };
 </script>
