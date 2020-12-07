@@ -1,14 +1,15 @@
 <template>
-  <div class="card mb-5" v-on:click="fullProfile">
-    <img :src="profile.photo" class="card-img-top " alt="profile-picture">
-    <div class="card-body">
-      <h3 class="card-title">{{ profile.user | capitalize }}</h3>
-      <hr>
-      <h5>Hobby</h5>
-      <p class="card-text">{{ profile.hobby }}</p>
-      <hr>
-      <h4>Il en moew plus </h4>
-
+  <div class="col-auto">
+    <div class="card mb-5" v-on:click="fullProfile">
+      <img :src="profile.photo" class="card-img-top " alt="profile-picture" />
+      <div class="card-body">
+        <h3 class="card-title">{{ profile.user | capitalize }}</h3>
+        <hr />
+        <h5>Hobby</h5>
+        <p class="card-text">{{ profile.hobby }}</p>
+        <hr />
+        <h4>Il en moew plus</h4>
+      </div>
     </div>
   </div>
 </template>
@@ -26,9 +27,7 @@ export default {
   methods: {
     fullProfile() {
       this.clicked = !this.clicked;
-      this.$emit("fullProfile",
-        this.clicked
-      );
+      this.$emit("fullProfile", this.clicked);
     }
   },
   filters: {

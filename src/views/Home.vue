@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div class="container">
     <div class="row justify-content-around">
       <profile-card
-        @fullProfile="fullProfile($event)" v-for="(profile, index) in profiles"
+        @fullProfile="fullProfile($event)"
+        v-for="(profile, index) in profiles"
         :key="index"
         :profile="profile"
       ></profile-card>
