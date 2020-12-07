@@ -127,5 +127,6 @@ export default {
 <style scoped>
 form {
   width: 350px;
+  color: aliceblue;
 }
 </style>

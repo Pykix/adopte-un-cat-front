@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row justify-content-around">
       <profile-card
-        @fullProfile="fullProfile($event)"
+        @fullProfile="fullProfile"
         v-for="(profile, index) in profiles"
         :key="index"
         :profile="profile"
@@ -21,10 +21,16 @@ export default {
   name: "Home",
   data() {
     return {
-      profiles: null
+      profiles: null,
+      profile: null
     };
   },
-  methods: {},
+  methods: {
+    fullProfile(data) {
+      this.profile = data.profile;
+      console.log(this.profile);
+    }
+  },
   components: {
     "profile-card": ProfileCard
   },

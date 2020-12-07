@@ -32,7 +32,8 @@ export default {
     return {
       username: null,
       password: null,
-      connected: false
+      connected: false,
+      errorMessage: null
     };
   },
   methods: {
@@ -53,14 +54,17 @@ export default {
           .then(response => {
               if (response.status === 200) {
                 localStorage.setItem("Token", response.data.key);
-                localStorage.setItem("user_id", this.username);
+                localStorage.setItem("user_id", response.data.user);
+                localStorage.setItem("username", this.username);
                 store.commit("isconnected");
-                console.log(store.state.isConnected);
                 this.$router.push("/");
               }
             }
           )
-          .catch(err => console.log(err));
+          .catch(err => {
+            err;
+            alert("Les identifiants ne sont pas bon");
+          });
       }
     }
   }

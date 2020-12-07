@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Login from "@/views/Login";
 import Home from "@/views/Home";
 import Registration from "@/views/Registration";
+import Profile from "@/views/Profile";
 
 Vue.use(VueRouter);
 
@@ -10,7 +11,8 @@ const routes = [
   {
     path: "/login",
     name: "Login",
-    component: Login
+    component: Login,
+    meta: { hideNavigation: true }
   },
   {
     path: "/",
@@ -20,7 +22,14 @@ const routes = [
   {
     path: "/registration",
     name: "Registration",
-    component: Registration
+    component: Registration,
+    meta: { hideNavigation: true }
+  },
+  {
+    path: "/profil",
+    name: "Profil",
+    component: Profile,
+    meta: { inProfileSpace: true }
   }
 ];
 

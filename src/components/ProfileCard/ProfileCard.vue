@@ -25,9 +25,10 @@ export default {
     };
   },
   methods: {
+    // recupere les données du profil cliqué
     fullProfile() {
       this.clicked = !this.clicked;
-      this.$emit("fullProfile", this.clicked);
+      this.$emit("fullProfile", this.$props);
     }
   },
   filters: {

@@ -1,6 +1,9 @@
 <template>
   <div>
-    <h2 class="text-center">Miaouscription</h2>
+    <h2 class="text-center my-4">
+      Pret à rejoindre des centaines d'utilisateurs ? <br>
+      Grace à adopte un cat recontrez plein de chat
+    </h2>
     <form class="mx-auto">
       <div class="form-group">
         <label for="username">Nom d'utilisateur</label>
