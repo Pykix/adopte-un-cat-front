@@ -8,6 +8,12 @@
         :profile="profile"
       ></profile-card>
     </div>
+    <profile-modal
+
+      v-if="showModal"
+      @close="showModal = false"
+      :profile="profile"
+    />
   </div>
 </template>
 
@@ -16,23 +22,27 @@
 import ProfileCard from "@/components/ProfileCard/ProfileCard";
 
 import axios from "axios";
+import ProfileDetail from "@/components/ProfileDetail/ProfileDetail";
 
 export default {
   name: "Home",
   data() {
     return {
       profiles: null,
-      profile: null
+      profile: null,
+      showModal: false
     };
   },
   methods: {
     fullProfile(data) {
       this.profile = data.profile;
-      console.log(this.profile);
+      this.showModal = true;
+      console.log(this.profile, this.showModal);
     }
   },
   components: {
-    "profile-card": ProfileCard
+    "profile-card": ProfileCard,
+    "profile-modal": ProfileDetail
   },
   mounted() {
     if (localStorage.getItem("Token")) {
@@ -57,4 +67,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>

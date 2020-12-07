@@ -17,6 +17,12 @@
           <li class="nav-item mt-5 mx-3">
             <router-link to="/profil">Mon Profil</router-link>
           </li>
+          <li class="nav-item mt-5 mx-3">
+            <router-link to="/profil">Mes Messages</router-link>
+          </li>
+          <li class="nav-item mt-5 mx-3">
+            <router-link to="/profil">Mes Likes / Match</router-link>
+          </li>
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item mt-5 mx-3" v-if="!logged">

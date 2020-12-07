@@ -87,7 +87,6 @@ export default {
           Authorization: "Token " + localStorage.getItem("Token")
         }
       };
-
       const data = {
         "gender": this.gender,
         "interested_gender": this.interest,
@@ -101,7 +100,9 @@ export default {
 
       axios
         .put(`http://localhost:8000/api/profiles/${user_id}/`, data, config)
-        .then(r => console.log(r))
+        .then(() => {
+          this.$router.push("/");
+        })
         .catch(err => console.log(err));
     },
     previewFiles: function(event) {

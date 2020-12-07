@@ -1,5 +1,5 @@
 <template>
-  <div class="col-auto">
+  <div class="col-auto" data-toggle="modal" data-target="#staticBackdrop">
     <div class="card mb-5" v-on:click="fullProfile">
       <img :src="profile.photo" class="card-img-top " alt="profile-picture" />
       <div class="card-body">
@@ -8,7 +8,11 @@
         <h5>Hobby</h5>
         <p class="card-text">{{ profile.hobby }}</p>
         <hr />
-        <h4>Il en moew plus</h4>
+        <div class="d-flex flex-row justify-content-around flag">
+          <i class="fas fa-heart "></i>
+          <i class="far fa-comments "></i>
+          <i class="fas fa-user-alt "></i>
+        </div>
       </div>
     </div>
   </div>
@@ -20,14 +24,12 @@ export default {
   props: ["profile"],
   data() {
     return {
-      clicked: false
 
     };
   },
   methods: {
     // recupere les données du profil cliqué
     fullProfile() {
-      this.clicked = !this.clicked;
       this.$emit("fullProfile", this.$props);
     }
   },
@@ -50,5 +52,11 @@ export default {
   width: 100%;
   height: 35vw;
   object-fit: cover;
+}
+
+.flag i {
+  border: 1px solid #2c3e50;
+  padding: 7px;
+  border-radius: 50%;
 }
 </style>

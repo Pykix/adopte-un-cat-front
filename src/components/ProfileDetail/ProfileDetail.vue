@@ -1,53 +1,46 @@
 <template>
-  <div class="text-center profile">
-    <img class="w-100" :src="profileData.photo" alt="">
-    <div class="container">
-      <h1>Mon profil</h1>
-      <h2>{{ profileData.user }}</h2>
-      <p>{{ profileData.biography }}</p>
-      <hr>
-      <p>{{ profileData.hobby }}</p>
+  <div class="modal fade modal-active">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">
+            {{ profile.user }}
+          </h4>
+          <button type="button" @click="$emit('close')" class="close"><span>&times;</span></button>
+        </div>
+        <div class="modal-body">
+          {{ profile.biography }}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" @click="$emit('close')">Fermer</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-//import ProfileForm from "@/components/ProfileForm/ProfileForm";
-import axios from "axios";
-import Cookies from "js-cookie";
-
-
 export default {
-  name: "Profile",
-  props: ["profile"],
-  data() {
-    return {
-      profileData: ""
-    };
-  },
-
-  components: {
-    //'profile-form': ProfileForm
-  },
-  watch: {},
-  mounted() {
-    const csrfToken = Cookies.get("csrftoken");
-    const config = {
-      headers: {
-        "X-CSRFToken": csrfToken,
-        Authorization: "Token " + localStorage.getItem("Token")
-      }
-    };
-    const profileId = localStorage.getItem("user_id");
-    axios
-      .get(`http://localhost:8000/api/profiles/${profileId}/`, config)
-      .then(r => this.profileData = r.data);
-  }
+  name: "ProfileDetail",
+  props: ["profile"]
 };
 </script>
 
 <style scoped>
-.profile {
-  color: aliceblue;
+.modal-active {
+  display: block;
+
+}
+.fade:not(.show) {
+  opacity: 1;
+}
+.modal.fade .modal-dialog {
+  transition: transform .3s ease-out;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 80%;
+  min-height: 90vh;
+  transform: translate(-50%, -50%);
 }
 </style>

@@ -10,8 +10,12 @@
         <label for="password">Password</label>
         <input type="password" class="form-control" id="password" v-model="password">
       </div>
+      <div v-if="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
       <button @click.prevent="login" type="submit" class="btn btn-primary">Miaounexion</button>
     </form>
+
     <div class="text-center mt-3">
       Pas encore inscrit ? Viens minou
       <router-link to="/registration">ici</router-link>
@@ -61,9 +65,9 @@ export default {
               }
             }
           )
-          .catch(err => {
-            err;
-            alert("Les identifiants ne sont pas bon");
+          .catch(() => {
+            this.username = this.password = "";
+            this.errorMessage = "Les identifiants ne sont pas bon ";
           });
       }
     }

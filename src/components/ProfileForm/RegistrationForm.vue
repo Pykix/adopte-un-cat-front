@@ -43,6 +43,9 @@
           v-model="password2"
         />
       </div>
+      <div v-if="errorMessage" class="alert alert-danger">
+        {{ errorMessage }}
+      </div>
       <button @click.prevent="register" type="submit" class="btn btn-primary">
         Miaouscription
       </button>
@@ -62,12 +65,12 @@ export default {
       email: null,
       password1: null,
       password2: null,
-      changeForm: false
+      changeForm: false,
+      errorMessage: null
     };
   },
   methods: {
     register() {
-      this.$emit("change-form", this.changeForm = true);
       const csrfToken = Cookies.get("csrftoken");
       // const authToken = "Token " + localStorage.getItem("Token");
       const config = {
@@ -88,8 +91,11 @@ export default {
         .then(r => {
           localStorage.setItem("Token", r.data.key);
           localStorage.setItem("user_id", r.data.user);
+          this.$emit("change-form", (this.changeForm = true));
         })
-        .catch(err => console.log(err));
+        .catch(() => {
+          this.errorMessage = "L'identifiant est deja utilisé"
+        });
     }
   }
 };
