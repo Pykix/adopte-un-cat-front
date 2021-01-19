@@ -51,9 +51,18 @@
       </div>
       <div class="form-group">
         <label for="photo">Une petite photo ?</label>
-        <input type="file" id="photo" accept="image/" class="file-input" ref="myFiles" @change="previewFiles">
+        <input
+          type="file"
+          id="photo"
+          accept="image/"
+          class="file-input"
+          ref="myFiles"
+          @change="previewFiles"
+        />
       </div>
-      <button @click.prevent="sendProfileInformation" class="btn btn-primary">Je valide mon profil !</button>
+      <button @click.prevent="sendProfileInformation" class="btn btn-primary">
+        Je valide mon profil !
+      </button>
       <small>
         il sera modifiable a tout moment dans les parametres de ton
         compte</small
@@ -88,18 +97,18 @@ export default {
         }
       };
       const data = {
-        "gender": this.gender,
-        "interested_gender": this.interest,
-        "color": this.color,
-        "hobby": this.hobby,
-        "biography": this.biography
+        gender: this.gender,
+        interested_gender: this.interest,
+        color: this.color,
+        hobby: this.hobby,
+        biography: this.biography
       };
       const photo = new FormData();
       photo.append("photo", this.photo, this.photo.name);
       const user_id = localStorage.getItem("user_id");
 
       axios
-        .put(`http://localhost:8000/api/profiles/${user_id}/`, data, config)
+        .put(`http://127.0.0.1:8000/api/profiles/${user_id}/`, data, config)
         .then(() => {
           this.$router.push("/");
         })
@@ -117,7 +126,7 @@ export default {
       const photo = new FormData();
       photo.append("photo", this.photo, this.photo.name);
       axios
-        .put("http://localhost:8000/api/avatar/", photo, config)
+        .put("http://127.0.0.1:8000/api/avatar/", photo, config)
         .then(r => console.log(r))
         .catch(err => console.log(err));
     }

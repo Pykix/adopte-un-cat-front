@@ -6,7 +6,6 @@
 </template>
 
 <script>
-
 import ProfileForm from "@/components/ProfileForm/ProfileForm";
 import RegistrationForm from "@/components/ProfileForm/RegistrationForm";
 

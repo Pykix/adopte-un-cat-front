@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2 class="text-center my-4">
-      Pret à rejoindre des centaines d'utilisateurs ? <br>
+      Pret à rejoindre des centaines d'utilisateurs ? <br />
       Grace à adopte un cat recontrez plein de chat
     </h2>
     <form class="mx-auto">
@@ -49,6 +49,10 @@
       <button @click.prevent="register" type="submit" class="btn btn-primary">
         Miaouscription
       </button>
+      <div class="text-center mt-3">
+        Deja inscrit ? C'est par
+        <router-link to="/login">ici</router-link>
+      </div>
     </form>
   </div>
 </template>
@@ -80,21 +84,21 @@ export default {
         }
       };
       const data = {
-        "username": this.username,
-        "email": this.email,
-        "password1": this.password1,
-        "password2": this.password2
+        username: this.username,
+        email: this.email,
+        password1: this.password1,
+        password2: this.password2
       };
 
       axios
-        .post("http://localhost:8000/api/rest-auth/registration/", data, config)
+        .post("http://127.0.0.1:8000/api/rest-auth/registration/", data, config)
         .then(r => {
           localStorage.setItem("Token", r.data.key);
           localStorage.setItem("user_id", r.data.user);
           this.$emit("change-form", (this.changeForm = true));
         })
         .catch(() => {
-          this.errorMessage = "L'identifiant est deja utilisé"
+          this.errorMessage = "L'identifiant est deja utilisé";
         });
     }
   }

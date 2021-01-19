@@ -6,11 +6,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    isConnected: localStorage.getItem('user_id')
+    isConnected: localStorage.getItem("user_id")
   },
   mutations: {
     isconnected(state) {
-      state.isConnected = localStorage.getItem('user_id');
-    },
+      state.isConnected = localStorage.getItem("user_id");
+    }
   }
 });

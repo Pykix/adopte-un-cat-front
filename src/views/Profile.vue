@@ -1,6 +1,6 @@
 <template>
   <div class="text-center profile">
-    <img class="w-100" :src="profileData.photo" alt="">
+    <img class="w-100" :src="profileData.photo" alt="" />
     <div class="container">
       <form class="justify-content-start">
         <div class="form-group text-left">
@@ -14,7 +14,9 @@
               value="M"
               v-model="profileData.interested_gender"
             />
-            <label for="male_interest" class="ml-1 form-check-label">Male</label>
+            <label for="male_interest" class="ml-1 form-check-label"
+              >Male</label
+            >
           </div>
           <div class="form-check">
             <input
@@ -23,8 +25,11 @@
               id="female_interest"
               class="form-check-input"
               value="F"
-              v-model="profileData.interested_gender" />
-            <label for="female_interest" class="ml-1 form-check-label">Femelle</label>
+              v-model="profileData.interested_gender"
+            />
+            <label for="female_interest" class="ml-1 form-check-label"
+              >Femelle</label
+            >
           </div>
           <div class="form-group">
             <label for="color">Couleur du pellage</label>
@@ -58,9 +63,21 @@
             ></textarea>
             <div class="form-group">
               <label for="photo">On Change la photo ?</label>
-              <input @change="previewFiles" type="file" id="photo" accept="image/" class="file-input" ref="myFiles">
+              <input
+                @change="previewFiles"
+                type="file"
+                id="photo"
+                accept="image/"
+                class="file-input"
+                ref="myFiles"
+              />
             </div>
-            <button @click.prevent="sendProfileInformation" class="btn btn-primary">Je change mon profil !</button>
+            <button
+              @click.prevent="sendProfileInformation"
+              class="btn btn-primary"
+            >
+              Je change mon profil !
+            </button>
           </div>
         </div>
       </form>
@@ -97,11 +114,11 @@ export default {
       };
 
       const data = {
-        "gender": this.profileData.gender,
-        "interested_gender": this.profileData.interested_gender,
-        "color": this.profileData.color,
-        "hobby": this.profileData.hobby,
-        "biography": this.profileData.biography
+        gender: this.profileData.gender,
+        interested_gender: this.profileData.interested_gender,
+        color: this.profileData.color,
+        hobby: this.profileData.hobby,
+        biography: this.profileData.biography
       };
       const user_id = localStorage.getItem("user_id");
 
@@ -145,7 +162,6 @@ export default {
     } else {
       this.$router.push("/login");
     }
-
   }
 };
 </script>

@@ -1,11 +1,21 @@
 <template>
   <div class="container-fluid">
     <div class="text-center">
-      <img class="img-fluid" :src="image" alt="brand-logo">
+      <img class="img-fluid" :src="image" alt="brand-logo" />
     </div>
-    <nav v-if="!$route.meta.hideNavigation" class="navbar navbar-light navbar-expand-lg">
-      <button class="navbar-toggler mt-md-5 bg-light" type="button" data-toggle="collapse" data-target="#navbarNav"
-              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <nav
+      v-if="!$route.meta.hideNavigation"
+      class="navbar navbar-light navbar-expand-lg"
+    >
+      <button
+        class="navbar-toggler mt-md-5 bg-light"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -36,7 +46,6 @@
 </template>
 
 <script>
-
 import axios from "axios";
 import Cookies from "js-cookie";
 import store from "@/store/store";
@@ -80,14 +89,14 @@ export default {
           }
         })
         .catch(err => console.log(err));
-
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.nav-item, a {
+.nav-item,
+a {
   color: aliceblue;
 
   :hover {
