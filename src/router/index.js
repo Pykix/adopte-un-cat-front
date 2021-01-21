@@ -4,6 +4,7 @@ import Login from "@/views/Login";
 import Home from "@/views/Home";
 import Registration from "@/views/Registration";
 import Profile from "@/views/Profile";
+import Like from "@/views/Like";
 
 Vue.use(VueRouter);
 
@@ -30,6 +31,11 @@ const routes = [
     name: "Profil",
     component: Profile,
     meta: { inProfileSpace: true }
+  },
+  {
+    path: "/likes",
+    name: "Like",
+    component: Like
   }
 ];
 

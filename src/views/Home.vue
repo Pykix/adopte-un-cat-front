@@ -40,26 +40,26 @@ export default {
     },
     like(data) {
       if (localStorage.getItem("Token")) {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Token " + localStorage.getItem("Token")
-        }
-      };
-      data = {
-        'to_user': data.profile.id
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Token " + localStorage.getItem("Token")
+          }
+        };
+        data = {
+          "to_user": data.profile.id
+        };
+        // const user_id = localStorage.getItem("user_id");
+        axios
+          .post("http://127.0.0.1:8000/api/like/", data, config)
+          .then(response => {
+            console.log(response.data);
+          })
+          .catch(err => console.log(err));
+      } else {
+        console.log("coucou");
+        // this.$router.push("/login");
       }
-      // const user_id = localStorage.getItem("user_id");
-      axios
-        .post("http://127.0.0.1:8000/api/like/", data, config)
-        .then(response => {
-          console.log(response.data);
-        })
-        .catch(err => console.log(err));
-    } else {
-      console.log('coucou')
-      // this.$router.push("/login");
-    }
     }
   },
   components: {
