@@ -8,8 +8,9 @@
         <h5>Hobby</h5>
         <p class="card-text">{{ profile.to_user.hobby }}</p>
         <hr />
+        <input type="hidden" name="likeId" :value="profile.id">
         <div class="d-flex flex-row justify-content-around flag">
-          <i class="fas fa-heart" v-on:click="like"></i>
+          <i class="fas fa-heart" v-on:click="isMatch"></i>
 
           <i class="fas fa-user-alt" v-on:click="fullProfile"></i>
         </div>
@@ -30,8 +31,9 @@ export default {
     fullProfile() {
       this.$emit("fullProfile", this.$props);
     },
-    like() {
-      this.$emit("like", this.$props);
+    isMatch() {
+      
+      this.$emit("isMatch", this.$props);
     }
   },
   filters: {
