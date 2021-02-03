@@ -5,6 +5,7 @@ import Home from "@/views/Home";
 import Registration from "@/views/Registration";
 import Profile from "@/views/Profile";
 import Like from "@/views/Like";
+import Message from "@/views/Message";
 
 Vue.use(VueRouter);
 
@@ -36,7 +37,12 @@ const routes = [
     path: "/likes",
     name: "Like",
     component: Like
-  }
+  },
+  {
+    path: "/message",
+    name: "Message",
+    component: Message
+  },
 ];
 
 const router = new VueRouter({

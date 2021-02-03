@@ -1,12 +1,12 @@
 <template>
   <div class="col-auto" data-toggle="modal" data-target="#staticBackdrop">
     <div class="card mb-5">
-      <img :src="profile.to_user.photo" class="card-img-top " alt="profile-picture" />
+      <img :src="profile.from_user.photo" class="card-img-top " alt="profile-picture" />
       <div class="card-body">
-        <h3 class="card-title">{{ profile.to_user.user | capitalize }}</h3>
+        <h3 class="card-title">{{ profile.from_user.user | capitalize }}</h3>
         <hr />
         <h5>Hobby</h5>
-        <p class="card-text">{{ profile.to_user.hobby }}</p>
+        <p class="card-text">{{ profile.from_user.hobby }}</p>
         <hr />
         <input type="hidden" name="likeId" :value="profile.id">
         <div class="d-flex flex-row justify-content-around flag">

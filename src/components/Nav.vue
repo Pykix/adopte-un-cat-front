@@ -28,7 +28,7 @@
             <router-link to="/profil">Mon Profil</router-link>
           </li>
           <li class="nav-item mt-5 mx-3">
-            <router-link to="/profil">Mes Messages</router-link>
+            <router-link to="/message">Mes Messages</router-link>
           </li>
           <li class="nav-item mt-5 mx-3">
             <router-link to="/likes">Mes Likes / Match</router-link>
