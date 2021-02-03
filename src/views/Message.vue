@@ -1,9 +1,11 @@
 <template>
-  <chat-window
-    :current-user-id="currentUserId"
-    :rooms="rooms"
-    :messages="messages"
-  />
+  <div>
+    <chat-window
+      :current-user-id="currentUserId"
+      :rooms="rooms"
+      :messages="messages"
+    />
+  </div>
 </template>
 
 <script>
@@ -20,7 +22,7 @@ export default {
     return {
       rooms: [],
       messages: [],
-      currentUserId: localStorage.getItem("user_id"),
+      currentUserId: parseInt(localStorage.getItem("user_id")),
     };
   },
   mounted() {
@@ -33,48 +35,39 @@ export default {
       };
 
       axios
-        .get("http://127.0.0.1:8000/api/message/", config)
+        .get("http://127.0.0.1:8000/api/like/", config)
         .then((response) => {
           console.log(response.data);
           const rooms = [];
           const messages = [];
           for (let i = 0; i < response.data.length; i++) {
             let message = {
-              _id: response.data[i].id,
-              content: response.data[i].message,
-              sender_id: response.data[i].sender,
-              timestamp: response.data[i].timestamp,
+              _id: response.data[i].messages.id,
+              content: "message 1",
+              sender_id: response.data[i].from_user.id,
             };
-            let room = 
-              {
-                roomId: response.data[i].like,
-                roomName: "Test " + i,
-                users: [
-                  {
-                    _id: response.data[i].sender_id,
-                    username: response.data[i].receiver
-                  },
-                  {
-                    _id: this.currentUserId,
-                    username: response.data[i].sender
-                  }
-                ],
-                typingUsers: [this.currentUserId]
-              }
-            console.log(room);
-            if (Object.values(room).indexOf(response.data[i].like) > -1) {
-              console.log("Bonjour")
-              rooms.push(room);
-            } else {
-             console.log('aurevoir')
-            }
-            
-            console.log(rooms);
             messages.push(message);
+            let room = {
+              roomId: response.data[i].id,
+              roomName: response.data[i].from_user.user,
+              users: [
+                {
+                  _id: response.data[i].from_user.id,
+                  username: response.data[i].from_user.user,
+                },
+                {
+                  _id: this.currentUserId,
+                  username: localStorage.getItem("username"),
+                },
+              ],
+              typingUsers: [this.currentUserId],
+            };
+            // console.log(Object.values(room));
+            rooms.push(room);
           }
           this.rooms = rooms;
           this.messages = messages;
-          console.log(this.rooms);
+          console.log(this.messages);
         })
         .catch((err) => console.log(err));
     } else {
