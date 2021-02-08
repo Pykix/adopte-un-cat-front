@@ -20,8 +20,8 @@ export default {
     };
   },
   methods: {
-    send_message() {
-      this.$emit("sendMessage", this.sendMessage);
+    sendMessage() {
+      this.$emit("sendMessage", this.messageInput);
       this.messageInput = "";
     },
   },

@@ -4,7 +4,7 @@
       <div
         class="chat-message col-md-5"
         v-bind:class="[
-          message.sender_id == currentUser
+          message.sender_id != currentUser
             ? 'to-message'
             : 'from-message offset-md-7',
         ]"

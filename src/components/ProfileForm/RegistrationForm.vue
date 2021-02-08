@@ -95,6 +95,7 @@ export default {
         .then(r => {
           localStorage.setItem("Token", r.data.key);
           localStorage.setItem("user_id", r.data.user);
+          localStorage.setItem("username", this.username);
           this.$emit("change-form", (this.changeForm = true));
         })
         .catch(() => {
