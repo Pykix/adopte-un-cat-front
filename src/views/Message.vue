@@ -1,5 +1,5 @@
 <template>
-  <div class="row main-area" v-if="!rooms">
+  <div class="row main-area">
     <div class="user col-4">
       <Users
         v-for="(user, index) in rooms"
@@ -24,9 +24,7 @@
       <MessageInput @sendMessage="sendMessage" />
     </div>
   </div>
-  <div v-else class="text-center">
-    Vous n'avez pas encore de conversation !
-  </div>
+
 </template>
 
 <script>

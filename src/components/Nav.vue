@@ -1,11 +1,9 @@
 <template>
-  <div class="container-fluid">
-    <div class="text-center">
-      <img class="img-fluid" :src="image" alt="brand-logo" />
-    </div>
+<div>
+<div class="container-fluid px-mt-lg-0">  
     <nav
       v-if="!$route.meta.hideNavigation"
-      class="navbar navbar-light navbar-expand-lg"
+      class="navbar navbar-light navbar-expand-lg p-lg-4"
     >
       <button
         class="navbar-toggler mt-md-5 bg-light"
@@ -18,31 +16,36 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse " id="navbarNav">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item mt-5 mx-3">
+          <li class="nav-item mt-4 mt-lg-0 mx-3">
             <router-link to="/">Accueil</router-link>
           </li>
 
-          <li class="nav-item mt-5 mx-3">
+          <li class="nav-item mt-4 mt-lg-0 mx-3">
             <router-link to="/profil">Mon Profil</router-link>
           </li>
-          <li class="nav-item mt-5 mx-3">
+          <li class="nav-item mt-4 mt-lg-0 mx-3">
             <router-link to="/message">Mes Messages</router-link>
           </li>
-          <li class="nav-item mt-5 mx-3">
-            <router-link to="/likes">Mes Likes / Match</router-link>
+          <li class="nav-item mt-4 mt-lg-0 mx-3">
+            <router-link to="/likes">Mes Likes</router-link>
           </li>
         </ul>
         <ul class="navbar-nav">
-          <li class="nav-item mt-5 mx-3" v-if="!logged">
+          <li class="nav-item mt-4 mt-lg-0" v-if="!logged">
             <router-link to="/login">Login</router-link>
           </li>
-          <li v-else @click="logout" class="nav-item mx-3 mt-5">Logout</li>
+          <li v-else id="logout" @click="logout" class="nav-item mx-3 mt-4 mt-lg-0">Logout</li>
         </ul>
       </div>
     </nav>
   </div>
+  <div class="text-center">
+      <img class="img-fluid" :src="image" alt="brand-logo" />
+  </div>
+</div>
+
 </template>
 
 <script>
@@ -98,13 +101,25 @@ export default {
 .nav-item,
 a {
   color: aliceblue;
-
+  transition: 0.3s;
   :hover {
-    color: red;
+    color: #DE16AC;
+    text-decoration: none;
+  }
+}
+.navbar-brand > img {
+  max-width: 100px;
+}
+#logout {
+  cursor: pointer;
+  :hover {
+    color: #DE16AC;
   }
 }
 
-.navbar-brand > img {
-  max-width: 100px;
+@media (min-width: 992px){
+  .container-fluid {
+  background: #273747;
+}
 }
 </style>

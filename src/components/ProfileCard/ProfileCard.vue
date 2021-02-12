@@ -8,9 +8,9 @@
         <h5>Hobby</h5>
         <p class="card-text">{{ profile.hobby }}</p>
         <hr />
+        <hr />
         <div class="d-flex flex-row justify-content-around flag">
           <i class="fas fa-heart" v-on:click="like"></i>
-          <i class="far fa-comments"></i>
           <i class="fas fa-user-alt" v-on:click="fullProfile"></i>
         </div>
       </div>

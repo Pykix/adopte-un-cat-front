@@ -1,5 +1,6 @@
 <template>
-  <div class="row justify-content-around">
+  <div class="justify-content-around">
+    <h1>On t'admire en secret</h1>
     <LikeCard
       v-for="(profile, index) in profiles"
       :key="index"

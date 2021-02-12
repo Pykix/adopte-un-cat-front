@@ -1,9 +1,9 @@
 <template>
   <div class="text-center profile">
-    <img class="w-100" :src="profileData.photo" alt="" />
+    <img class="picture" :src="profileData.photo" alt="" />
     <div class="container">
       <form class="justify-content-start">
-        <div class="form-group text-left">
+        <div class="form-group text-left my-3">
           <div class="form-check">
             <p>Je recharche</p>
             <input
@@ -31,7 +31,7 @@
               >Femelle</label
             >
           </div>
-          <div class="form-group">
+          <div class="form-group mt-3">
             <label for="color">Couleur du pellage</label>
             <input
               type="text"
@@ -61,8 +61,8 @@
               id="biography"
               v-model="profileData.biography"
             ></textarea>
-            <div class="form-group">
-              <label for="photo">On Change la photo ?</label>
+            <div class="form-group mt-3">
+              <label for="photo" class="mr-2">On Change la photo ?</label>
               <input
                 @change="previewFiles"
                 type="file"
@@ -95,7 +95,7 @@ export default {
   name: "Profile",
   data() {
     return {
-      profileData: ""
+      profileData: "",
     };
   },
 
@@ -103,6 +103,10 @@ export default {
     //'profile-form': ProfileForm
   },
   watch: {},
+  computed: {
+
+    
+  },
   methods: {
     sendProfileInformation() {
       const csrfToken = Cookies.get("csrftoken");
@@ -169,5 +173,10 @@ export default {
 <style scoped>
 .profile {
   color: aliceblue;
+}
+.picture {
+  max-width: 250px;
+  max-height: 300px;
+  border-radius: 5px;
 }
 </style>
