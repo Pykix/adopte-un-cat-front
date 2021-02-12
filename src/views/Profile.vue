@@ -1,7 +1,7 @@
 <template>
   <div class="text-center profile">
     <div class="container">
-      <h1>Un peu de changement {{profileData.user}} ?</h1>
+      <h1>Un peu de changement {{ profileData.user }} ?</h1>
       <form class="justify-content-start">
         <div class="form-group text-left my-3">
           <div class="form-check">
@@ -36,17 +36,17 @@
             <input
               type="text"
               placeholder="Roux"
-              class="form-control"
+              class="form-control small-input"
               id="color"
               v-model="profileData.color"
             />
           </div>
-          <div class="form-group">
+          <div class="form-group small-input">
             <label for="hobby">Hobby</label>
             <input
               type="text"
               placeholder="Tapenade"
-              class="form-control"
+              class="form-control small-input"
               id="hobby"
               v-model="profileData.hobby"
             />
@@ -62,13 +62,14 @@
               v-model="profileData.biography"
             ></textarea>
             <div class="form-group mt-3">
-              <label for="photo" class="mr-2">On Change la photo ?</label>
+              <img :src="profileData.photo" class="image" alt="" />
+              <label for="photo" class="mx-2">On Change la photo ?</label>
               <input
                 @change="previewFiles"
                 type="file"
                 id="photo"
                 accept="image/"
-                class="file-input"
+                class="file-input mt-2"
                 ref="myFiles"
               />
             </div>
@@ -81,6 +82,7 @@
           </div>
         </div>
       </form>
+      <button class="btn btn-primary">Changement de mot de passe</button>
     </div>
   </div>
 </template>
@@ -103,18 +105,15 @@ export default {
     //'profile-form': ProfileForm
   },
   watch: {},
-  computed: {
-
-    
-  },
+  computed: {},
   methods: {
     sendProfileInformation() {
       const csrfToken = Cookies.get("csrftoken");
       const config = {
         headers: {
           "X-CSRFToken": csrfToken,
-          Authorization: "Token " + localStorage.getItem("Token")
-        }
+          Authorization: "Token " + localStorage.getItem("Token"),
+        },
       };
 
       const data = {
@@ -122,31 +121,31 @@ export default {
         interested_gender: this.profileData.interested_gender,
         color: this.profileData.color,
         hobby: this.profileData.hobby,
-        biography: this.profileData.biography
+        biography: this.profileData.biography,
       };
       const user_id = localStorage.getItem("user_id");
 
       axios
         .put(`http://localhost:8000/api/profiles/${user_id}/`, data, config)
-        .then(r => console.log(r))
-        .catch(err => console.log(err));
+        .then((r) => console.log(r))
+        .catch((err) => console.log(err));
     },
-    previewFiles: function(event) {
+    previewFiles: function (event) {
       const csrfToken = Cookies.get("csrftoken");
       const config = {
         headers: {
           "X-CSRFToken": csrfToken,
-          Authorization: "Token " + localStorage.getItem("Token")
-        }
+          Authorization: "Token " + localStorage.getItem("Token"),
+        },
       };
       this.photo = event.target.files[0];
       const photo = new FormData();
       photo.append("photo", this.photo, this.photo.name);
       axios
         .put("http://localhost:8000/api/avatar/", photo, config)
-        .then(r => console.log(r))
-        .catch(err => console.log(err));
-    }
+        .then((r) => console.log(r))
+        .catch((err) => console.log(err));
+    },
   },
   mounted() {
     if (store.state.isConnected) {
@@ -154,19 +153,19 @@ export default {
       const config = {
         headers: {
           "X-CSRFToken": csrfToken,
-          Authorization: "Token " + localStorage.getItem("Token")
-        }
+          Authorization: "Token " + localStorage.getItem("Token"),
+        },
       };
       const profileId = localStorage.getItem("user_id");
       axios
         .get(`http://localhost:8000/api/profiles/${profileId}/`, config)
-        .then(r => {
+        .then((r) => {
           this.profileData = r.data;
         });
     } else {
       this.$router.push("/login");
     }
-  }
+  },
 };
 </script>
 
@@ -178,5 +177,13 @@ export default {
   max-width: 250px;
   max-height: 300px;
   border-radius: 5px;
+}
+.small-input {
+  max-width: 250px;
+}
+.image {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 50%;
 }
 </style>
