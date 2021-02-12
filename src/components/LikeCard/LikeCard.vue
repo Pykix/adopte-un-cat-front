@@ -19,6 +19,7 @@
             <hr />
             <div class="d-flex flex-row justify-content-around flag">
               <i v-bind:class="{ like: isMatched }" class="fas fa-heart" v-on:click="isMatch"></i>
+              <i class="fas fa-times" v-on:click="deleteMatch"></i>
               <i class="fas fa-user-alt" v-on:click="fullProfile"></i>
             </div>
           </div>
@@ -44,6 +45,7 @@
             </div>
             <div class="d-flex flex-row justify-content-around flag mb-2">
               <i v-bind:class="{ like: isMatched }" class="fas fa-heart" v-on:click="isMatch"></i>
+              <i class="fas fa-times" v-on:click="deleteMatch"></i>
               <i class="fas fa-arrow-left" v-on:click="close"></i>
             </div>
           </div>
@@ -71,6 +73,9 @@ export default {
     isMatch() {
       this.isMatched = true;
       this.$emit("isMatch", this.$props);
+    },
+    deleteMatch() {
+      this.$emit("deleteMatch", this.profile.id)
     },
     close() {
       this.isFliped = !this.isFliped;

@@ -7,6 +7,7 @@
       :key="index"
       :profile="profile"
       @isMatch="isMatch"
+      @deleteMatch="deleteMatch"
       >
     </LikeCard>
   </div>
@@ -53,8 +54,29 @@ export default {
         // this.$router.push("/login");
       }
     },
+    deleteMatch(id) {
+      console.log(id)
+      if (localStorage.getItem("Token")) {
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Token " + localStorage.getItem("Token")
+          }
+        };
+        
+        // const user_id = localStorage.getItem("user_id");
+        axios
+          .delete("http://127.0.0.1:8000/api/like/" + id + "/", config)
+          .then(response => {
+            console.log(response.data);
+          })
+          .catch(err => console.log(err));
+      } else {
+        console.log("coucou");
+        // this.$router.push("/login");
+    }
   },
-  
+  },
   mounted() {
     if (localStorage.getItem("Token")) {
       const config = {
