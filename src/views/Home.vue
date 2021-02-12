@@ -8,6 +8,7 @@
         :key="index"
         :profile="profile"
       ></profile-card>
+
     </div>
     <profile-modal
       v-if="showModal"
@@ -33,6 +34,12 @@ export default {
     };
   },
   methods: {
+    fullProfile1() {
+      this.$emit("fullProfile", this.$props);
+    },
+    like1() {
+      this.$emit("like", this.$props);
+    },
     fullProfile(data) {
       this.profile = data.profile;
       this.showModal = true;
@@ -88,4 +95,5 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>
