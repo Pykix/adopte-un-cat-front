@@ -21,18 +21,17 @@
           <li class="nav-item mt-4 mt-lg-0 mx-3">
             <router-link to="/">Accueil</router-link>
           </li>
-
           <li class="nav-item mt-4 mt-lg-0 mx-3">
-            <router-link to="/profil">Mon Profil</router-link>
+            <router-link to="/likes">Mes Likes</router-link>
           </li>
           <li class="nav-item mt-4 mt-lg-0 mx-3">
             <router-link to="/message">Mes Messages</router-link>
           </li>
-          <li class="nav-item mt-4 mt-lg-0 mx-3">
-            <router-link to="/likes">Mes Likes</router-link>
-          </li>
         </ul>
         <ul class="navbar-nav">
+          <li class="nav-item mt-4 mt-lg-0 mx-3">
+            <router-link to="/profil">Mon Profil</router-link>
+          </li>
           <li class="nav-item mt-4 mt-lg-0" v-if="!logged">
             <router-link to="/login">Login</router-link>
           </li>

@@ -1,7 +1,7 @@
 <template>
   <div class="text-center profile">
-    <img class="picture" :src="profileData.photo" alt="" />
     <div class="container">
+      <h1>Un peu de changement {{profileData.user}} ?</h1>
       <form class="justify-content-start">
         <div class="form-group text-left my-3">
           <div class="form-check">

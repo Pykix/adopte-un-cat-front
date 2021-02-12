@@ -24,18 +24,13 @@
           <h3 class="card-title">{{ profile.user | capitalize }}</h3>
           <hr />
           <h4>Profil</h4>
-          
           <p class="card-text">{{ profile.biography }}</p>
           <hr />
           <h4>Hobby</h4>
-          
           <p class="card-text">{{ profile.hobby }}</p>
           <hr />
           <h4>Couleur</h4>
-          
           <p class="card-text">{{ profile.color }}</p>
-
-
           <hr />
           <hr />
           </div>
