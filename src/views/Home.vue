@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div class="row justify-content-around">
+    <div class="row justify-content-center">
       <profile-card
         @fullProfile="fullProfile"
         @like="like"

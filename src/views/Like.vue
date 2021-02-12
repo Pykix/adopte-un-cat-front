@@ -1,6 +1,7 @@
 <template>
-  <div class="justify-content-around">
-    <h1>On t'admire en secret</h1>
+<div>
+  <h1>Ils t'ont liké</h1>
+  <div class="row justify-content-center">
     <LikeCard
       v-for="(profile, index) in profiles"
       :key="index"
@@ -9,6 +10,8 @@
       >
     </LikeCard>
   </div>
+</div>
+  
 </template>
 
 <script>

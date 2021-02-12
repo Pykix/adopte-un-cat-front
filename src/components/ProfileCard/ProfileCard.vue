@@ -1,5 +1,5 @@
 <template>
-<div class="col-auto align-items-stretch">
+<div class="col-auto">
   <div v-bind:class="{active: isFliped}" class="flip-box">
     <div  class="flip-box-inner">
       <div class="card mb-5 flip-box-front">
@@ -78,7 +78,7 @@ export default {
 
 <style scoped>
 .card {
-  width: 18rem;
+  width: 20rem;
 }
 
 .card-img-top {
