@@ -18,7 +18,7 @@
         </div>
       </div>
 
-      <div class="card mb-5 flip-box-back h-100">
+      <div class="card mb-5 flip-box-back h-100 scroll">
         <div class="card-body d-flex flex-column">
           <div class="flex-grow-1">
           <h3 class="card-title">{{ profile.user | capitalize }}</h3>
@@ -34,7 +34,7 @@
           <hr />
           <hr />
           </div>
-          <div class="d-flex flex-row justify-content-around flag">
+          <div class="d-flex flex-row justify-content-around flag mb-2">
             <i class="fas fa-heart" v-on:click="like"></i>
             <i class="fas fa-arrow-left" v-on:click="close"></i>
           </div>
@@ -86,7 +86,9 @@ export default {
   height: 35vw;
   object-fit: cover;
 }
-
+.scroll {
+  overflow-y: auto;
+}
 .flag i {
   border: 1px solid #2c3e50;
   padding: 7px;
